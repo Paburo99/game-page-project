@@ -40,7 +40,6 @@
                     <p>Your browser does not support the video tag.</p>
                 </video>
             </div>
-            <div class="hero-overlay"></div>
             <div class="container hero-content">
                 <h2>The Adventure Awaits!</h2>
                 <p>Prepare for an unparalleled journey into a world of fantasy, mistery, danger and a lot of adventures.
@@ -52,20 +51,31 @@
         <section id="about">
             <div class="container">
                 <h2>About the Game</h2>
-                <article>
-                    <h3>Uncover the Truth of this World</h3>
-                    <p>Enlight the path that leads to the lost truth of the past. Begin your journey to bring hope again
-                        to this realm.</p>
-                </article>
-                <article>
-                    <h3>Limitless Adventures</h3>
-                    <p>Wander through the world, explore the unknown, and discover the secrets of this realm.</p>
-                </article>
-                <article>
-                    <h3>Deep Connections</h3>
-                    <p>You will meet many people, some of them will be your friends, some of them will be your enemies,
-                        but each one of them has a unique and rich story.</p>
-                </article>
+                <div class="about-content">
+                    <div class="about-card" id="about-1">
+                        <article>
+                            <h3>Uncover the Truth of this World</h3>
+                            <p>Enlight the path that leads to the lost truth of the past. Begin your journey to bring
+                                hope again
+                                to this realm.</p>
+                        </article>
+                    </div>
+                    <div class="about-card" id="about-2">
+                        <article>
+                            <h3>Limitless Adventures</h3>
+                            <p>Wander through the world, explore the unknown, and discover the secrets of this realm.
+                            </p>
+                        </article>
+                    </div>
+                    <div class="about-card" id="about-3">
+                        <article>
+                            <h3>Deep Connections</h3>
+                            <p>You will meet many people, some of them will be your friends, some of them will be your
+                                enemies,
+                                but each one of them has a unique and rich story.</p>
+                        </article>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -115,16 +125,57 @@
         </section>
 
         <section id="media">
-            <div class="container">
-                <h2>Media Showcase</h2>
-                <article>
-                    <h3>Concept Art Gallery</h3>
-                    <figure>
-                        <img src="assets/img/image.png" alt="Game image"
-                            style="width:300px; height:170px; border:1px solid #ccc;">
-                        <figcaption>Game art: Dungeon</figcaption>
-                    </figure>
-                </article>
+            <div class="gallery-background" id="galleryBackground">
+                <h2>Gallery</h2>
+
+                <div class="gallery-controls">
+                    <div class="nav-controls">
+                        <button class="btn-nav btn-prev" id="btnPrev">
+                            <img src="assets/img/btn-prev-1.png" alt="Previous">
+                        </button>
+
+                        <div class="image-counter">
+                            <span id="currentImage">1</span>/<span id="totalImages">8</span>
+                        </div>
+
+                        <button class="btn-nav btn-next" id="btnNext">
+                            <img src="assets/img/btn-next-1.png" alt="Next">
+                        </button>
+                    </div>
+
+                    <button class="btn-download" id="btnDownload">
+                        <img src="assets/img/btn-download.9ceac.png" alt="Download">
+                    </button>
+                </div>
+            </div>
+
+            <div class="thumbnail-carousel">
+                <div class="thumbnail-container" id="thumbnailContainer">
+                    <div class="thumbnail active" data-index="0" data-image="assets/img/Whisk_446d2936b1.jpg">
+                        <img src="assets/img/Whisk_446d2936b1.jpg" alt="Gallery Image 1">
+                    </div>
+                    <div class="thumbnail" data-index="1" data-image="assets/img/Whisk_9035bf3774.jpg">
+                        <img src="assets/img/Whisk_9035bf3774.jpg" alt="Gallery Image 2">
+                    </div>
+                    <div class="thumbnail" data-index="2" data-image="assets/img/Whisk_9697d811ba.jpg">
+                        <img src="assets/img/Whisk_9697d811ba.jpg" alt="Gallery Image 3">
+                    </div>
+                    <div class="thumbnail" data-index="3" data-image="assets/img/Whisk_cb33d18421.jpg">
+                        <img src="assets/img/Whisk_cb33d18421.jpg" alt="Gallery Image 4">
+                    </div>
+                    <div class="thumbnail" data-index="4" data-image="assets/img/Whisk_652d60d658.jpg">
+                        <img src="assets/img/Whisk_652d60d658.jpg" alt="Gallery Image 5">
+                    </div>
+                    <div class="thumbnail" data-index="5" data-image="assets/img/Whisk_b54b2124da.jpg">
+                        <img src="assets/img/Whisk_b54b2124da.jpg" alt="Gallery Image 6">
+                    </div>
+                    <div class="thumbnail" data-index="6" data-image="assets/img/Whisk_58a0782e24.jpg">
+                        <img src="assets/img/Whisk_58a0782e24.jpg" alt="Gallery Image 7">
+                    </div>
+                    <div class="thumbnail" data-index="7" data-image="assets/img/Whisk_2b7b000fe0.jpg">
+                        <img src="assets/img/Whisk_2b7b000fe0.jpg" alt="Gallery Image 8">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -268,14 +319,38 @@
 
         <aside>
             <div class="container">
-                <h3>Latest Dev Diary</h3>
-                <article>
-                    <h4>Crafting the Soundscape</h4>
-                    <p>Read about how our audio team is bringing the world of Epic Game to life... <a href="#">Read
-                            more</a>
-                    </p>
-                    <p>Posted: <time datetime="2025-06-14">June 14, 2025</time></p>
-                </article>
+                <h2>Check out our latest news</h2>
+                <div class="news-container">
+                    <a href="" class="btn btn-news">
+                        <h3>Latest Dev Diary</h3>
+                        <article>
+                            <h4>Crafting the Soundscape</h4>
+                            <p>Read about how our audio team is bringing the world of Epic Game to life...</p>
+                            <p>Posted: <time datetime="2025-06-14">June 14, 2025</time></p>
+                        </article>
+                    </a>
+
+                    <a href="" class="btn btn-news">
+                        <h3>Second News</h3>
+                        <article>
+                            <h4>Crafting the Soundscape</h4>
+                            <p>Read about how our audio team is bringing the world of Epic Game to life...</p>
+                            <p>Posted: <time datetime="2025-06-14">June 14, 2025</time></p>
+                        </article>
+                    </a>
+
+                    <a href="" class="btn btn-news">
+                        <h3>Third News</h3>
+                        <article>
+                            <h4>Crafting the Soundscape</h4>
+                            <p>Read about how our audio team is bringing the world of Epic Game to life...</p>
+                            <p>Posted: <time datetime="2025-06-14">June 14, 2025</time></p>
+                        </article>
+                    </a>
+                </div>
+                <a href="" class="btn btn-viewall">
+                    <img src="assets/img/btn-viewall-1.png" alt="View all news">
+                </a>
             </div>
         </aside>
     </main>
@@ -303,7 +378,8 @@
                         <li><a href="mailto:support@awesomegamestudio.com">Contact Support</a></li>
                     </ul>
                 </nav>
-                <p class="copyright">&copy; <time datetime="2025">2025</time> Awesome Game Studio. All rights reserved.</p>
+                <p class="copyright">&copy; <time datetime="2025">2025</time> Awesome Game Studio. All rights reserved.
+                </p>
             </div>
         </div>
     </footer>

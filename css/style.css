@@ -1,11 +1,11 @@
 :root {
     /* --- COLORS --- */
-    --primary-color: #baeaf8;
+    --primary-color: #d6ebf1;
     --accent-color: #227398;
-    --background-color: #3775a250;
-    --darker-background-color: #051522;
+    --background-color: #09497a60;
+    --secondary-background-color: #051522;
     --text-color: #e2deb5fb;
-    --dark-color: #103143;
+    --dark-color: #112935;
     --shadow-color: #0b1721;
     --highlight-color: #febc16;
 
@@ -26,10 +26,25 @@ html {
 
 body {
     background-color: var(--background-color);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
     color: var(--text-color);
     font-family: var(--body-font);
     font-size: 1.6rem;
     line-height: 1.6;
+    position: relative;
+}
+
+/* CSS Noise Overlay */
+body::before {
+    filter: contrast(170%) brightness(1000%);
+    background: repeating-conic-gradient(from 0deg, transparent, transparent 1deg, rgba(255,255,255,0.03) 1deg, rgba(255,255,255,0.03) 2deg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -39,7 +54,7 @@ body {
 
 /* --- HEADER --- */
 header {
-    background-color: var(--darker-background-color);
+    background-color: var(--secondary-background-color);
 }
 
 .header-container {
@@ -93,13 +108,14 @@ header nav ul li a {
     justify-content: center;
 }
 
-.hero-overlay {
+#hero::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
@@ -128,6 +144,38 @@ header nav ul li a {
     height: auto;
     transform: translateX(-60%) translateY(-50%);
     object-fit: cover;
+}
+
+/* --- ABOUT SECTION --- */
+.about-content {
+    display: block;
+}
+
+.about-card {
+    height: 30vh;
+    padding: 2rem;
+    margin: 2rem;
+    border: 1px solid var(--highlight-color);
+    border-radius: 0.5rem;
+    text-align: center;
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#about-1 {
+    background-image: url("../assets/img/Whisk_58a0782e24.jpg");
+}
+
+#about-2 {
+    background-image: url("../assets/img/Whisk_b54b2124da.jpg");
+}
+
+#about-3 {
+    background-image: url("../assets/img/Whisk_9035bf3774.jpg");
 }
 
 /* --- FEATURES SECTION --- */
@@ -165,14 +213,211 @@ header nav ul li a {
     margin: 0 auto 2rem;
 }
 
+/* --- MEDIA SECTION --- */
+#media {
+    overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.gallery-background {
+    flex: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../assets/img/Whisk_446d2936b1.jpg");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.gallery-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    z-index: 1;
+}
+
+#media h2 {
+    font-size: 3rem;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    margin-top: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    position: relative;
+}
+
+/* --- GALLERY CONTROLS --- */
+.gallery-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    z-index: 2;
+    position: absolute;
+    bottom: 10rem;
+    width: 100%;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btn-download {
+    position: absolute;
+    right: 1rem;
+}
+
+.btn-nav, .btn-download {
+    background: transparent;
+    border: none;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover, .btn-download:hover {
+    transform: scale(1.1);
+}
+
+.btn-nav img, .btn-download img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.image-counter {
+    background: transparent;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+    min-width: 6rem;
+    text-align: center;
+}
+
+/* --- THUMBNAIL CAROUSEL --- */
+.thumbnail-carousel {
+    position: absolute;
+    bottom: 0;
+    background: transparent;
+    padding: 1rem 0;
+    z-index: 2;
+    width: 100%;
+
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 1rem;
+    padding: 0 2rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.thumbnail-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.thumbnail-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.thumbnail {
+    flex-shrink: 0;
+    width: 12rem;
+    height: 8rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative; 
+}
+
+.thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.thumbnail:hover::before {
+    opacity: 0;
+}
+
+.thumbnail.active {
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.thumbnail.active::before {
+    opacity: 0;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail:hover img {
+    transform: scale(1.05);
+}
+
+.nav-btn:focus, .download-btn:focus, .thumbnail:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
 /* --- EDITIONS SECTION --- */
 .editions-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1px;
-    background-color: var(--darker-background-color);
+    background-color: var(--secondary-background-color);
     /* This is coloring the grid (only visible in the gaps) */
-    border: 1px solid var(--darker-background-color);
+    border: 1px solid var(--secondary-background-color);
     border-radius: 0.5rem;
 }
 
@@ -182,7 +427,7 @@ header nav ul li a {
 }
 
 .grid-header {
-    background-color: var(--darker-background-color);
+    background-color: var(--secondary-background-color);
     font-family: var(--heading-font);
     font-weight: bold;
     text-align: center;
@@ -224,9 +469,13 @@ aside {
     padding: 2rem 0;
 }
 
+.news-container {
+    display: block;
+}
+
 /* --- FOOTER --- */
 footer {
-    background-color: var(--darker-background-color);
+    background-color: var(--secondary-background-color);
     border-top: 3px solid var(--dark-color);
     margin-top: 3rem;
     padding: 2rem 0;
@@ -241,10 +490,6 @@ footer {
     gap: 1rem;
     margin-bottom: 1rem;
     list-style: none;
-}
-
-.social-container a {
-    display: flex;
 }
 
 .social-container a img {
@@ -277,7 +522,16 @@ h3,
 h4 {
     font-family: var(--heading-font);
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+h2 {
+    font-size: 3rem;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    position: relative;
 }
 
 p {
@@ -299,14 +553,15 @@ a:hover {
     display: inline-block;
     padding: 0.8rem 1.6rem;
     font-family: var(--heading-font);
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-transform: uppercase;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
+/* --- BUTTON HERO --- */
 .btn-primary {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: bold;
     background-color: rgba(0, 0, 0, 0.3);
     border: 2px solid var(--highlight-color);
     border-radius: 0.5rem;
@@ -314,6 +569,30 @@ a:hover {
 
 .btn-primary:hover {
     background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* --- BUTTON ASIDE --- */
+.btn-viewall {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.btn-viewall img {
+    height: 6rem;
+    width: auto;
+}
+
+.btn-news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--dark-color);
+    border: 1px solid var(--highlight-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -343,6 +622,99 @@ a:hover {
         margin-top: 0;
     }
 
+    /* --- ABOUT SECTION --- */
+    .about-card {
+        position: relative;
+        background-color: transparent;
+        border: none;
+        border-top: 1px solid var(--highlight-color);
+        border-radius: 0;
+    }
+    .about-card:hover {
+        text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
+    }
+
+    .about-card::before {
+        content: "";
+        position: absolute;
+        width: 32rem;
+        height: 18rem;
+        background-image: none;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .about-card:hover::before {
+        background-color: transparent;
+        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+    }
+
+    #about-1 {
+        background-image: none;
+    }
+
+    #about-1 article {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 40%;
+    }
+
+    #about-1::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-image: url("../assets/img/Whisk_58a0782e24.jpg");
+    }
+
+    #about-2 {
+        background-image: none;
+    }
+
+    #about-2 article {
+        position: absolute;
+        top: 0;
+        right: 2rem;
+        width: 40%;
+    }
+    #about-2::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-image: url("../assets/img/Whisk_b54b2124da.jpg");
+    }
+
+    #about-3 {
+        background-image: none;
+    }
+
+    #about-3 article {
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        width: 40%;
+    }
+
+    #about-3::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-image: url("../assets/img/Whisk_9035bf3774.jpg");
+    }
+
+    /* --- MEDIA SECTION --- */
+    .btn-download {
+        right: 1.5rem;
+    }
+
     /* --- EDITIONS SECTION --- */
     .editions-grid {
         grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -351,6 +723,24 @@ a:hover {
     .editions-grid div:nth-child(4n-1),
     .editions-grid div:nth-child(4n) {
         display: grid;
+    }
+
+    /* --- ASIDE --- */
+    .news-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .btn-news {
+        flex: 1 1 25rem;
+        padding: 1rem;
+        margin-bottom: 0;
+    }
+
+    .btn-viewall {
+        padding: 1rem 0;
+        margin-top: 2rem;
     }
 }
 
