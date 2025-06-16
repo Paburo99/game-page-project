@@ -96,22 +96,6 @@ header nav ul li a:hover {
     color: var(--highlight-color);
 }
 
-/* header nav ul li a::after {
-    content: "";
-    filter: blur(0.4rem);
-    position: absolute;
-    bottom: -0.5rem;
-    left: 0;
-    height: 0.2rem;
-    width: 100%;
-    background-color: transparent;
-    transition: all 0.3s ease-in-out;
-}
-
-header nav ul li a:hover::after { 
-    background-color: var(--text-color);
-} */
-
 .logo {
     font-family: var(--heading-font);
     font-size: 2rem;
@@ -138,10 +122,6 @@ header nav ul li a:hover::after {
 }
 
 /* --- MOBILE NAVIGATION --- */
-.mobile-menu-toggle {
-    display: none;
-}
-
 .hamburger-line {
     width: 2.5rem;
     height: 0.3rem;
@@ -162,16 +142,8 @@ header nav ul li a:hover::after {
     transform: rotate(-45deg) translate(0.6rem, -0.6rem);
 }
 
-.main-nav {
-    width: 100%;
-}
-
-
 @media (max-width: 767px) {
-    .logo {
 
-    }
-    
     .mobile-menu-toggle {
         display: flex;
         flex-direction: column;
@@ -1196,6 +1168,20 @@ a {
         flex-direction: row;
         gap: 3rem;
         margin-top: 0;
+    }
+
+    .logo {
+
+        left: 0;
+
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .main-nav {
+        width: 100%;
     }
 
     /* --- ABOUT SECTION --- */
