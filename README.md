@@ -1,6 +1,6 @@
 # 🎮 Chronicles of the Lost Realm - Landing Page
 
-Una página de aterrizaje completamente responsiva para un videojuego épico de fantasía, construida con HTML5, CSS3 y JavaScript vanilla.
+Una landing page completamente responsiva para un videojuego épico de fantasía, construida con HTML5, CSS3 y JavaScript vanilla.
 
 ![Game Landing Page](assets/img/logo.png)
 
@@ -150,7 +150,6 @@ La navegación móvil se activa automáticamente en pantallas menores a 768px:
 - ✅ Chrome, Firefox, Safari, Edge (últimas versiones)
 - ✅ Dispositivos móviles iOS y Android
 - ✅ Tabletas y desktop
-- ✅ Modo oscuro compatible
 
 ## 🎮 Créditos
 
@@ -163,16 +162,6 @@ La navegación móvil se activa automáticamente en pantallas menores a 768px:
 ## 📄 Licencia
 
 Este proyecto es para fines educativos y de demostración.
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
 
 ---
 
