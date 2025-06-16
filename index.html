@@ -41,10 +41,28 @@
                 </video>
             </div>
             <div class="container hero-content">
-                <h2>The Adventure Awaits!</h2>
+                <h1>The Adventure Awaits!</h1>
                 <p>Prepare for an unparalleled journey into a world of fantasy, mistery, danger and a lot of adventures.
                 </p>
                 <a href="#preorder" class="btn btn-primary">Pre-order Now</a>
+                <div class="countdown-timer">
+                    <div class="timer-segment">
+                        <span id="days" class="timer-number">00</span>
+                        <span class="timer-label">Days</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span id="hours" class="timer-number">00</span>
+                        <span class="timer-label">Hours</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span id="minutes" class="timer-number">00</span>
+                        <span class="timer-label">Minutes</span>
+                    </div>
+                    <div class="timer-segment">
+                        <span id="seconds" class="timer-number">00</span>
+                        <span class="timer-label">Seconds</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -227,20 +245,20 @@
                 <h2>Pre-order Interest & Newsletter</h2>
 
                 <form class="preorder-form" action="#" method="post">
-                    <fieldset class="preorder-fieldset">
+                    <fieldset class="preorder-fieldset" id="information-fieldset">
                         <legend>Your Information</legend>
 
-                        <div>
+                        <div class="preorder-item">
                             <label for="name">Your Name:</label>
                             <input type="text" id="name" name="user_name" placeholder="Enter your name" required>
                         </div>
 
-                        <div>
+                        <div class="preorder-item">
                             <label for="email">Your Email:</label>
                             <input type="email" id="email" name="user_email" placeholder="Enter your email" required>
                         </div>
 
-                        <div>
+                        <div class="preorder-item">
                             <label for="platform">Preferred Platform:</label>
                             <select name="platform" id="platform">
                                 <option value="">--Select a Platform--</option>
@@ -257,29 +275,29 @@
                         </div>
                     </fieldset>
 
-                    <fieldset class="preorder-fieldset">
+                    <fieldset class="preorder-fieldset" id="interest-fieldset">
                         <legend>I'm interested in:</legend>
 
-                        <div>
+                        <div class="preorder-item">
                             <input type="checkbox" id="notify" name="interest-type" value="preorder_notify">
                             <label for="notify">Pre-order Notifications</label>
                         </div>
 
-                        <div>
+                        <div class="preorder-item">
                             <input type="checkbox" id="newsletter" name="interest-type" value="newsletter_signup">
                             <label for="newsletter">Newsletter</label>
                         </div>
 
-                        <div>
+                        <div class="preorder-item">
                             <input type="checkbox" id="beta" name="interest-type" value="beta_access">
                             <label for="beta">Information about the Beta access</label>
                         </div>
                     </fieldset>
 
-                    <fieldset class="preorder-fieldset">
+                    <fieldset class="preorder-fieldset" id="comments-fieldset">
                         <legend>Any Questions or Comments?</legend>
 
-                        <div>
+                        <div class="preorder-item">
                             <label for="comments">Your Message (optional):</label>
                             <textarea name="comments" id="comments"
                                 placeholder="Tell us what you're most excited about!"></textarea>
@@ -328,25 +346,25 @@
                         <h3>Latest Dev Diary</h3>
                         <article>
                             <h4>Crafting the Soundscape</h4>
-                            <p>Read about how our audio team is bringing the world of Epic Game to life...</p>
+                            <p>Read about how our audio team is infusing the world of Chronicles of the Lost Realm with life.</p>
                             <p>Posted: <time datetime="2025-06-14">June 14, 2025</time></p>
                         </article>
                     </a>
 
                     <a href="" class="btn btn-news" id="news-2">
-                        <h3>Second News</h3>
+                        <h3>Latest Dev Diary</h3>
                         <article>
-                            <h4>Crafting the Soundscape</h4>
-                            <p>Read about how our audio team is bringing the world of Epic Game to life...</p>
+                            <h4>The Art of Exploration</h4>
+                            <p>Discover the meticulous design process behind the game's immersive environments.</p>
                             <p>Posted: <time datetime="2025-06-14">June 14, 2025</time></p>
                         </article>
                     </a>
 
                     <a href="" class="btn btn-news" id="news-3">
-                        <h3>Third News</h3>
+                        <h3>Latest Dev Diary</h3>
                         <article>
-                            <h4>Crafting the Soundscape</h4>
-                            <p>Read about how our audio team is bringing the world of Epic Game to life...</p>
+                            <h4>The Making of the Characters</h4>
+                            <p>Learn about the creative process behind the game's diverse character roster.</p>
                             <p>Posted: <time datetime="2025-06-14">June 14, 2025</time></p>
                         </article>
                     </a>
@@ -384,6 +402,6 @@
             </div>
         </div>
     </footer>
+    <script src="js/script.js"></script>
 </body>
-
 </html>

@@ -187,6 +187,25 @@ header nav ul li a:hover::after {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
+.countdown-timer {
+    display: flex;
+    width: 30rem;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    justify-content: space-around;
+    margin-top: 2rem;
+    font-weight: bold;
+    text-shadow: var(--text-shadow);
+    border: 1px solid var(--highlight-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.timer-segment {
+    text-align: center;
+}
 /* --- ABOUT SECTION --- */
 .about-content {
     display: block;
@@ -557,7 +576,23 @@ header nav ul li a:hover::after {
     text-shadow: var(--text-shadow);
 }
 
-textarea#comments {
+.preorder-fieldset input {
+    height: 3rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--highlight-color);
+    border-radius: 0.5rem;
+}
+
+.preorder-fieldset select {
+    height: 3rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid var(--highlight-color);
+    border-radius: 0.5rem;
+}
+
+.preorder-fieldset textarea {
     margin-top: 1rem;
     padding: 0.5rem;
     height: 6rem;
@@ -567,7 +602,29 @@ textarea#comments {
     border-radius: 0.5rem;
 }
 
-textarea#comments:focus {
+.preorder-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+#interest-fieldset .preorder-item {
+    flex-direction: row;
+    align-items: center;
+}
+
+#information-fieldset .preorder-item {
+    flex-direction: column;
+}
+
+#comments-fieldset .preorder-item {
+    flex-direction: column;
+}
+
+.preorder-fieldset input:focus,
+.preorder-fieldset textarea:focus,
+.preorder-fieldset select:focus {
     border-radius: 0.5rem;
     outline: none;
     box-shadow: 0 0 0.8rem var(--highlight-color);
@@ -656,8 +713,11 @@ aside {
 
 .btn.btn-viewall {
     display: flex;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
     height: 6rem;
-    width: auto;
+    max-width: 42rem;
     background-image: url("../assets/img/btn-viewall-1.png");
     background-size: cover;
     background-position: center;
@@ -790,11 +850,22 @@ h4 {
     text-shadow: var(--text-shadow);
 }
 
+h1 {
+    font-size: 4rem;
+    letter-spacing: 0.3rem;
+    text-align: center;
+    text-shadow: var(--text-shadow);
+    background: linear-gradient(115deg, var(--primary-color), var(--highlight-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
 h2 {
     font-size: 3rem;
     letter-spacing: 0.3rem;
     text-align: center;
-    z-index: 2;
     position: relative;
 }
 
