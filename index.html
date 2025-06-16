@@ -13,13 +13,35 @@
 </head>
 
 <body>
+    <!-- Trailer Video -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <button class="btn-close" id="btnClose" aria-label="Close Video Modal">
+                <img src="assets/img/icon-close.png" alt="Close Video Modal Button">
+            </button>
+            <video class="video-player" id="videoPlayer" controls>
+                <source src="assets/video/trailer.mp4" type="video/mp4">
+                <p>Your browser does not support the video tag.</p>
+            </video>
+        </div>
+    </div>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <header>
         <div class="header-container">
             <a href="#" class="logo">
                 <img src="assets/img/logo.png" alt="Chronicles of the Lost Realm Logo">
             </a>
-            <nav aria-label="Main Navigation">
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#features">Features</a></li>
@@ -44,7 +66,11 @@
                 <h1>The Adventure Awaits!</h1>
                 <p>Prepare for an unparalleled journey into a world of fantasy, mistery, danger and a lot of adventures.
                 </p>
-                <a href="#preorder" class="btn btn-primary">Pre-order Now</a>
+
+                <button class="btn-play-video" id="btnPlayVideo">
+                    <img src="assets/img/btn-next-1.png" alt="Play Video">
+                </button>
+
                 <div class="countdown-timer">
                     <div class="timer-segment">
                         <span id="days" class="timer-number">00</span>
@@ -63,6 +89,8 @@
                         <span class="timer-label">Seconds</span>
                     </div>
                 </div>
+
+                <a href="#preorder" class="btn btn-primary">Pre-order Now</a>
             </div>
         </section>
 
@@ -244,23 +272,25 @@
             <div class="container">
                 <h2>Pre-order Interest & Newsletter</h2>
 
-                <form class="preorder-form" action="#" method="post">
-                    <fieldset class="preorder-fieldset" id="information-fieldset">
+                <form class="preorder-form" id="preorderForm" novalidate method="post">
+                    <fieldset class="form-fieldset" id="information-fieldset">
                         <legend>Your Information</legend>
 
-                        <div class="preorder-item">
-                            <label for="name">Your Name:</label>
+                        <div class="form-item">
+                            <label for="name">Your Name <span class="required">*</span></label>
                             <input type="text" id="name" name="user_name" placeholder="Enter your name" required>
+                            <div class="error-message" id="nameError"></div>
                         </div>
 
-                        <div class="preorder-item">
-                            <label for="email">Your Email:</label>
+                        <div class="form-item">
+                            <label for="email">Your Email <span class="required">*</span></label>
                             <input type="email" id="email" name="user_email" placeholder="Enter your email" required>
+                            <div class="error-message" id="emailError"></div>
                         </div>
 
-                        <div class="preorder-item">
-                            <label for="platform">Preferred Platform:</label>
-                            <select name="platform" id="platform">
+                        <div class="form-item">
+                            <label for="platform">Preferred Platform <span class="required">*</span></label>
+                            <select name="platform" id="platform" required>
                                 <option value="">--Select a Platform--</option>
                                 <optgroup label="PC">
                                     <option value="steam">Steam</option>
@@ -272,42 +302,53 @@
                                     <option value="nintendo_switch">Nintendo Switch</option>
                                 </optgroup>
                             </select>
+                            <div class="error-message" id="platformError"></div>
                         </div>
                     </fieldset>
 
-                    <fieldset class="preorder-fieldset" id="interest-fieldset">
-                        <legend>I'm interested in:</legend>
+                    <fieldset class="form-fieldset" id="interest-fieldset">
+                        <legend>I'm interested in</legend>
 
-                        <div class="preorder-item">
+                        <div class="form-item">
                             <input type="checkbox" id="notify" name="interest-type" value="preorder_notify">
                             <label for="notify">Pre-order Notifications</label>
                         </div>
 
-                        <div class="preorder-item">
+                        <div class="form-item">
                             <input type="checkbox" id="newsletter" name="interest-type" value="newsletter_signup">
                             <label for="newsletter">Newsletter</label>
                         </div>
 
-                        <div class="preorder-item">
+                        <div class="form-item">
                             <input type="checkbox" id="beta" name="interest-type" value="beta_access">
                             <label for="beta">Information about the Beta access</label>
                         </div>
                     </fieldset>
 
-                    <fieldset class="preorder-fieldset" id="comments-fieldset">
+                    <fieldset class="form-fieldset" id="comments-fieldset">
                         <legend>Any Questions or Comments?</legend>
 
-                        <div class="preorder-item">
+                        <div class="form-item">
                             <label for="comments">Your Message (optional):</label>
                             <textarea name="comments" id="comments"
                                 placeholder="Tell us what you're most excited about!"></textarea>
+                            <div class="error-message" id="commentsError"></div>
                         </div>
                     </fieldset>
                     <div class="button-container">
-                        <button class="btn btn-form" type="submit">Sign Me Up!</button>
-                        <button class="btn btn-form" type="reset">Reset Form</button>
+                        <button class="btn btn-form" id="btnSubmit" type="submit">
+                            <span id="submitText">Sign Me Up!</span>
+                        </button>
+                        <button class="btn btn-form" id="btnReset" type="reset">Reset Form</button>
+                    </div>
+                    <div class="loading" id="loading">
+                        <span>Loading...</span>
                     </div>
                 </form>
+
+                <div class="success-message" id="successMessage">
+                    ✅ Form submitted successfully!
+                </div>
             </div>
         </section>
 
