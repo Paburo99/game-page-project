@@ -345,3 +345,20 @@ function initMobileMenu() {
         }
     });
 }
+
+// -- ANIMATION --
+anime({
+    targets: '.logo',
+    translateY: -20,
+    opacity: [0, 1],
+    duration: 1500,
+    easing: 'easeInOutQuad'
+});
+
+anime({
+    targets: '.feature-card',
+    translateY: [50, 0],
+    opacity: [0, 1],
+    delay: anime.stagger(200),
+});
+
