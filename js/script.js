@@ -1,15 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
-    new Gallery();
-    initMobileMenu();
-});
-
 // -- COUNTDOWN TIMER --
 const daysElement = document.getElementById("days");
 const hoursElement = document.getElementById("hours");
 const minutesElement = document.getElementById("minutes");
 const secondsElement = document.getElementById("seconds");
 
-const releaseDate = new Date("2025-06-16T20:00:00");
+const releaseDate = new Date("2025-07-16T20:00:00");
 
 function updateCountdown() {
     const now = new Date();
@@ -116,7 +111,7 @@ class Gallery {
         this.images.forEach((thumbnail, index) => {
             thumbnail.addEventListener("click", () => this.selectImage(index));
         });
-        
+
         // Keyboard navigation
         document.addEventListener("keydown", (e) => {
             if (e.key === "ArrowLeft") this.previousImage();
@@ -239,19 +234,19 @@ function showSuccess(field, errorElement) {
 }
 
 // Event listeners (Validation)
-document.getElementById('name').addEventListener('blur', function() {
+document.getElementById('name').addEventListener('blur', function () {
     validateField(this, patterns.name, 'Name should be 2-30 characters long, letters only');
 });
 
-document.getElementById('email').addEventListener('blur', function() {
+document.getElementById('email').addEventListener('blur', function () {
     validateField(this, patterns.email, 'Please enter a valid email address');
 });
 
-document.getElementById('platform').addEventListener('change', function() {
+document.getElementById('platform').addEventListener('change', function () {
     validateField(this);
 });
 
-document.getElementById('btnReset').addEventListener('click', function(e) {
+document.getElementById('btnReset').addEventListener('click', function (e) {
     e.preventDefault();
     form.reset();
     document.querySelectorAll('input, select, textarea').forEach(field => {
@@ -261,7 +256,7 @@ document.getElementById('btnReset').addEventListener('click', function(e) {
 });
 
 // Form submission
-form.addEventListener('submit', async function(e) {
+form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     // Disable submit button and show loading
@@ -303,7 +298,7 @@ function initMobileMenu() {
     // Toggle mobile menu
     function toggleMobileMenu() {
         const isActive = mobileToggle.classList.contains("active");
-        
+
         if (isActive) {
             closeMobileMenu();
         } else {
@@ -315,14 +310,14 @@ function initMobileMenu() {
         mobileToggle.classList.add("active");
         mainNav.classList.add("mobile-active");
         mobileOverlay.classList.add("active");
-        document.body.style.overflow = "hidden"; 
+        document.body.style.overflow = "hidden";
     }
 
     function closeMobileMenu() {
         mobileToggle.classList.remove("active");
         mainNav.classList.remove("mobile-active");
         mobileOverlay.classList.remove("active");
-        document.body.style.overflow = ""; 
+        document.body.style.overflow = "";
     }
 
     // Event listeners
@@ -347,18 +342,91 @@ function initMobileMenu() {
 }
 
 // -- ANIMATION --
-anime({
-    targets: '.logo',
-    translateY: -20,
-    opacity: [0, 1],
-    duration: 1500,
-    easing: 'easeInOutQuad'
-});
+function initAnimations() {
+    /*     gsap.fromTo('.logo',
+            {
+                opacity: 1,
+                scale: 1
+            },
+            {
+                duration: 1.5,
+                opacity: 0,
+                scale: 0.75,
+                ease: CustomWiggle.create('myWiggle', {
+                    wiggles: 5,
+                    type: 'easeOut'
+                })
+            }); */
 
-anime({
-    targets: '.feature-card',
-    translateY: [50, 0],
-    opacity: [0, 1],
-    delay: anime.stagger(200),
-});
+    const timeline = gsap.timeline({ defaults: { opacity: 0, ease: 'power2.out', duration: 0.8 } });
 
+    timeline
+        .from('.header-container .logo', {
+            y: '-2rem',
+        }, '<0.2')
+        .from('.header-container .mobile-menu-toggle', {
+            y: '-2rem',
+        }, '<0.2')
+        .from('.header-container .main-nav ul li', {
+            y: '-2rem',
+            stagger: 0.15,
+        }, '<')
+        .from('#hero .hero-content h1', {
+            y: '-2rem',
+        }, '<0.2')
+        .from('#hero .hero-content p', {
+            y: '-2rem',
+        }, '<0.2')
+        .from('#hero .hero-content .btn-play-video', {
+            y: '-2rem',
+        }, '<0.2')
+        .from('#hero .hero-content .countdown-timer', {
+            scale: 0.5,
+        }, '<0.2')
+        .from('#hero .hero-content .countdown-timer .timer-segment', {
+            stagger: 0.15,
+            y: 20,
+        }, '<0.2')
+        .from('#hero .hero-content .btn-primary', {
+            y: '-2rem',
+        }, '<0.2');
+
+    /* Scrubbed animation for smooth scroll-based movement */
+    gsap.from('.feature-card', {
+        scrollTrigger: {
+            trigger: '.features-grid',
+            start: 'top 80%',
+            end: 'bottom 80%',
+            scrub: true
+        },
+        y: '5rem',
+        stagger: {
+            each: 0.2,
+            from: 'start'
+        },
+    });
+
+    /* Toggle-based animation for opacity effects */
+    gsap.from('.feature-card', {
+        scrollTrigger: {
+            trigger: '.features-grid',
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleActions: 'play reverse play reverse',
+            markers: true
+        },
+        opacity: 0,
+        duration: 0.8,
+        stagger: {
+            each: 0.15,
+            from: 'start'
+        },
+    });
+}
+
+// -- DOM INITIALIZATION --
+document.addEventListener('DOMContentLoaded', () => {
+    new Gallery();
+    initMobileMenu();
+    initAnimations();
+});
