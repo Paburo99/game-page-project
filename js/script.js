@@ -396,22 +396,22 @@ function initAnimations() {
         scrollTrigger: {
             trigger: '.features-grid',
             start: 'top 80%',
-            end: 'bottom 80%',
+            end: 'bottom 90%',
             scrub: true
         },
         y: '5rem',
         stagger: {
             each: 0.2,
             from: 'start'
-        },
+        }
     });
 
     /* Toggle-based animation for opacity effects */
     gsap.from('.feature-card', {
         scrollTrigger: {
             trigger: '.features-grid',
-            start: 'top 80%',
-            end: 'bottom 20%',
+            start: 'top 90%',
+            end: 'bottom 10%',
             toggleActions: 'play reverse play reverse',
             markers: true
         },
@@ -423,6 +423,52 @@ function initAnimations() {
         },
     });
 }
+
+const featuresCard = document.querySelectorAll('.feature-card');
+
+featuresCard.forEach(card => {
+    let isHovering = false;
+
+    const playLeaveAnimation = () => {
+        gsap.to(card, {
+            rotateX: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            overwrite: 'auto'
+        });
+    };
+
+    const playEnterAnimation = () => {
+        gsap.to(card, {
+            rotateX: 360,
+            duration: 0.8,
+            ease: 'power2.out',
+            onComplete: () => {
+                // If the mouse left while it was animating, play the leave animation now
+                if (!isHovering) {
+                    playLeaveAnimation();
+                }
+            },
+            overwrite: 'auto'
+        });
+    };
+
+    card.addEventListener("mouseenter", () => {
+        isHovering = true;
+        // Don't interrupt an ongoing animation
+        if (!gsap.isTweening(card)) {
+            playEnterAnimation();
+        }
+    });
+
+    card.addEventListener("mouseleave", () => {
+        isHovering = false;
+        // Don't interrupt an ongoing animation
+        if (!gsap.isTweening(card)) {
+            playLeaveAnimation();
+        }
+    });
+});
 
 // -- DOM INITIALIZATION --
 document.addEventListener('DOMContentLoaded', () => {

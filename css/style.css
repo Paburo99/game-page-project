@@ -465,14 +465,13 @@ body.modal-open {
     border-radius: 0.5rem;
     text-align: center;
     padding: 2rem;
-    transform-style: preserve-3d;
-    transition: transform 0.3s ease;
+
 }
 
-.feature-card:hover {
+/* .feature-card:hover {
     background-color: rgba(0, 0, 0, 0.3);
     transform: rotate(2deg) translateY(-0.5rem);
-}
+} */
 
 .icon-placeholder {
     display: block;
